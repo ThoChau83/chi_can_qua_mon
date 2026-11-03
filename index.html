@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+  =========================================================
+  TRANG CHỦ - index.html
+  Người phụ trách: THÀNH VIÊN 2
+  File liên quan: css/home.css, js/home.js, thư mục images/
+  =========================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeCare - Chăm sóc sức khỏe tại nhà</title>
+
+  <!-- Font chữ Be Vietnam Pro (lấy từ Google Fonts) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+  <!-- Bộ icon Font Awesome. Cách dùng: <i class="fa-solid fa-house"></i> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS chung (Thành viên 1) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- CSS riêng của trang chủ (Thành viên 2) -->
+  <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body data-page="home">
+
+  <!-- HEADER: được chèn tự động bởi js/layout.js -->
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- ===================== 1. BANNER (HERO) ===================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <!-- Cột trái: chữ + ô tìm kiếm -->
+        <div class="hero-text">
+          <h1>Chăm sóc sức khỏe tại nhà <br>cho cả gia đình bạn</h1>
+
+          <form class="hero-search" id="hero-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="Tìm bác sĩ, dịch vụ, gói chăm sóc...">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+          </form>
+          <p class="search-error" id="search-error">Vui lòng nhập từ khóa cần tìm</p>
+
+          <ul class="hero-checks">
+            <li><i class="fa-solid fa-circle-check"></i> Bác sĩ, điều dưỡng đến tận nhà – đúng giờ hẹn</li>
+            <li><i class="fa-solid fa-circle-check"></i> Đặt lịch theo giờ, xem lại hồ sơ sức khỏe mọi lúc</li>
+            <li><i class="fa-solid fa-circle-check"></i> Hoàn tiền khi hủy lịch – minh bạch chi phí</li>
+          </ul>
+        </div>
+
+        <!-- Cột phải: ảnh đội ngũ bác sĩ -->
+        <div class="hero-image">
+          <img src="images/hero-bac-si.png" alt="Đội ngũ bác sĩ HomeCare">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== 2. DỊCH VỤ NHANH ===================== -->
+    <section class="services">
+      <div class="container services-grid">
+        <a href="dat-kham.html" class="service-card">
+          <i class="fa-solid fa-house-medical"></i>
+          <span>Đặt khám tại nhà</span>
+        </a>
+        <a href="#" class="service-card">
+          <i class="fa-solid fa-video"></i>
+          <span>Gọi video với bác sĩ</span>
+        </a>
+        <a href="#" class="service-card">
+          <i class="fa-solid fa-syringe"></i>
+          <span>Đặt lịch xét nghiệm</span>
+        </a>
+        <a href="#" class="service-card">
+          <i class="fa-solid fa-kit-medical"></i>
+          <span>Gói chăm sóc định kỳ</span>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ===================== 3. BÁC SĨ TIÊU BIỂU ===================== -->
+    <section class="featured-doctors">
+      <div class="container">
+
+        <div class="section-head">
+          <h2 class="section-title">Bác sĩ tiêu biểu</h2>
+          <a href="dat-kham.html" class="see-all">Xem tất cả →</a>
+        </div>
+
+        <div class="doctor-grid">
+          <!-- Thẻ bác sĩ 1 -->
+          <div class="doctor-card">
+            <div class="avatar">C</div>
+            <h3>ThS. Trần Ngọc C</h3>
+            <p class="doctor-specialty">Nội tổng quát</p>
+            <p class="rating">★ 4.9 · 142 đánh giá</p>
+            <a href="dat-kham.html" class="btn btn-outline btn-small">Đặt lịch</a>
+          </div>
+
+          <!-- Thẻ bác sĩ 2 -->
+          <div class="doctor-card">
+            <div class="avatar">D</div>
+            <h3>BS. Trần Lê Trung D</h3>
+            <p class="doctor-specialty">Vật lý trị liệu</p>
+            <p class="rating">★ 4.8 · 98 đánh giá</p>
+            <a href="dat-kham.html" class="btn btn-outline btn-small">Đặt lịch</a>
+          </div>
+
+          <!-- Thẻ bác sĩ 3 -->
+          <div class="doctor-card">
+            <div class="avatar">E</div>
+            <h3>BS. Phạm Thị E</h3>
+            <p class="doctor-specialty">Tim mạch</p>
+            <p class="rating">★ 4.9 · 215 đánh giá</p>
+            <a href="dat-kham.html" class="btn btn-outline btn-small">Đặt lịch</a>
+          </div>
+
+          <!-- Thẻ bác sĩ 4 -->
+          <div class="doctor-card">
+            <div class="avatar">Đ</div>
+            <h3>BS. Nguyễn Tuấn Đ</h3>
+            <p class="doctor-specialty">Xét nghiệm tại nhà</p>
+            <p class="rating">★ 4.7 · 87 đánh giá</p>
+            <a href="dat-kham.html" class="btn btn-outline btn-small">Đặt lịch</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== 4. ĐỐI TÁC ===================== -->
+    <section class="partners">
+      <div class="container">
+        <h2 class="section-title">Được tin tưởng hợp tác và đồng hành</h2>
+
+        <div class="partner-grid">
+          <div class="partner-item"><img src="images/doi-tac/vinmec.png" alt="Vinmec"></div>
+          <div class="partner-item"><img src="images/doi-tac/medpro.png" alt="Medpro"></div>
+          <div class="partner-item"><img src="images/doi-tac/bhxh.png" alt="Bảo hiểm xã hội Việt Nam"></div>
+          <div class="partner-item"><img src="images/doi-tac/doi-tac-4.png" alt="Đối tác"></div>
+          <div class="partner-item"><img src="images/doi-tac/chu-thap-do.png" alt="Hội Chữ thập đỏ Việt Nam"></div>
+          <div class="partner-item"><img src="images/doi-tac/hoan-my.png" alt="Hoàn Mỹ"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: được chèn tự động bởi js/layout.js -->
+  <div id="site-footer"></div>
+
+  <!-- JavaScript: đặt cuối body để HTML tải xong rồi mới chạy -->
+  <script src="js/layout.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

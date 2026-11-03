@@ -1,0 +1,326 @@
+/* =========================================================
+   DANG-KY.CSS - GIAO DIỆN 2 TRANG ĐĂNG KÝ
+   (dang-ky-khach-hang.html và dang-ky-bac-si.html)
+   Người phụ trách: THÀNH VIÊN 4
+   ========================================================= */
+
+
+/* =============== 1. NỀN TRANG + THẺ FORM =============== */
+.register-page {
+  background: linear-gradient(135deg, #f7f8fd, #e5eeff);
+}
+
+.register-wrapper {
+  padding: 60px 16px;
+}
+
+.register-card {
+  max-width: 896px;
+  margin: 0 auto;              /* căn giữa */
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;            /* để phần header xanh cũng được bo góc */
+  box-shadow: 0 20px 50px rgba(30, 60, 120, 0.1);
+}
+
+
+/* =============== 2. TIÊU ĐỀ XANH =============== */
+.register-header {
+  padding: 40px;
+  background: linear-gradient(135deg, var(--primary-darker), #087a5f);
+  color: var(--white);
+}
+
+.register-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.register-header p {
+  margin-top: 8px;
+  opacity: 0.9;                /* chữ hơi mờ */
+}
+
+
+/* =============== 3. FORM =============== */
+.register-form {
+  padding: 48px;
+}
+
+/* Lưới 2 cột cho các ô ngắn */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* .form-control dùng chung cho input, select, textarea */
+.form-control {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  background-color: var(--white);
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 98px;
+  padding: 14px 16px;
+  resize: vertical;            /* chỉ cho kéo giãn theo chiều dọc */
+}
+
+.form-control::placeholder {
+  color: #94a3b8;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+}
+
+/* Ô bị lỗi (JS thêm class .invalid) */
+.form-control.invalid {
+  border-color: var(--error);
+}
+
+.error-text {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--error);
+}
+
+/* Không có lỗi -> ẩn dòng báo lỗi */
+.error-text:empty {
+  display: none;
+}
+
+/* Đổi màu radio và checkbox thành màu xanh */
+.register-form input[type="radio"],
+.register-form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* --- Giới tính (radio) --- */
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding-top: 6px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* --- Ô checkbox dạng thẻ (Loại bảo hiểm / Loại chứng chỉ) --- */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.checkbox-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkbox-card:hover {
+  border-color: var(--primary);
+}
+
+/* :has() = "thẻ có chứa..." -> thẻ có chứa checkbox ĐANG ĐƯỢC TÍCH thì đổi màu */
+.checkbox-card:has(input:checked) {
+  background-color: #edfaf4;
+  border-color: var(--primary);
+}
+
+/* Nhóm checkbox bị lỗi (chưa chọn chứng chỉ nào) */
+.checkbox-grid.invalid .checkbox-card {
+  border-color: var(--error);
+}
+
+/* --- Khung tải file --- */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 16px;
+  background-color: #eff4ff;
+  border: 2px dashed #cbd5e1;  /* viền nét đứt */
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upload-box i {
+  font-size: 30px;
+  color: #64748b;
+}
+
+.upload-box strong {
+  font-weight: 500;
+}
+
+.upload-box span {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Rê chuột vào, hoặc đang kéo file vào (JS thêm .dragover) */
+.upload-box:hover,
+.upload-box.dragover {
+  border-color: var(--primary);
+  background-color: #e8f6ef;
+}
+
+/* Đã chọn file (JS thêm .has-file) */
+.upload-box.has-file {
+  border-style: solid;
+  border-color: var(--primary);
+  background-color: #e8f6ef;
+}
+
+.upload-box.has-file i,
+.upload-box.has-file strong {
+  color: var(--primary-dark);
+}
+
+/* File sai loại / quá lớn (JS thêm .invalid) */
+.upload-box.invalid {
+  border-color: var(--error);
+}
+
+/* --- Đồng ý điều khoản --- */
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.terms input {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.terms a {
+  font-weight: 700;
+  color: var(--primary-darker);
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Lùi dòng lỗi vào cho thẳng hàng với chữ (bỏ qua ô checkbox) */
+.terms-error {
+  padding-left: 30px;
+}
+
+
+/* =============== 4. NÚT BẤM =============== */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.btn-register {
+  flex: 1;                     /* nút Đăng ký chiếm hết chỗ còn lại */
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary-darker), #0a8a68);
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 8px 18px rgba(0, 105, 76, 0.25);
+}
+
+.btn-register:hover {
+  background: var(--primary-darker);
+}
+
+.btn-cancel {
+  width: 112px;
+  height: 56px;
+  border-radius: 8px;
+  font-weight: 500;
+  border-color: var(--primary-darker);
+  color: var(--primary-darker);
+}
+
+.login-text {
+  margin-top: 36px;
+  text-align: center;
+  color: #475569;
+}
+
+.login-text a {
+  margin-left: 10px;
+  font-weight: 700;
+  color: var(--primary-darker);
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+
+/* =============== 5. RESPONSIVE =============== */
+@media (max-width: 768px) {
+  .register-wrapper {
+    padding: 24px 12px;
+  }
+
+  .register-header {
+    padding: 28px 24px;
+  }
+
+  .register-header h1 {
+    font-size: 22px;
+  }
+
+  .register-form {
+    padding: 28px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;   /* 2 cột -> 1 cột */
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

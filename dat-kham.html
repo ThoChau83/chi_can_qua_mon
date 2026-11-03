@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+  =========================================================
+  TRANG ĐẶT KHÁM THEO BÁC SĨ - dat-kham.html
+  Người phụ trách: THÀNH VIÊN 5
+  File liên quan: css/dat-kham.css, js/dat-kham.js
+  Danh sách bác sĩ KHÔNG viết trong HTML mà do JavaScript tạo ra
+  từ mảng dữ liệu trong js/dat-kham.js
+  =========================================================
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt khám theo bác sĩ - HomeCare</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS chung (Thành viên 1) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- CSS riêng của trang đặt khám (Thành viên 5) -->
+  <link rel="stylesheet" href="css/dat-kham.css">
+</head>
+
+<!-- data-page="dat-kham": để layout.js gạch chân menu "Dịch vụ" -->
+<body data-page="dat-kham">
+
+  <!-- HEADER: được chèn tự động bởi js/layout.js -->
+  <div id="site-header"></div>
+
+  <main class="booking-page">
+    <div class="container">
+
+      <!-- ===================== 1. BANNER ===================== -->
+      <section class="booking-hero">
+        <div class="booking-hero-text">
+          <span class="badge">DỊCH VỤ Y TẾ TẬN TÂM</span>
+          <h1>ĐẶT KHÁM THEO BÁC SĨ</h1>
+          <p>
+            Chủ động kết nối chuyên gia y tế giàu kinh nghiệm, đặt lịch tiện lợi,
+            chăm sóc chu đáo ngay tại không gian thân quen của gia đình bạn.
+          </p>
+          <ul class="check-grid">
+            <li><i class="fa-solid fa-check"></i> Chọn bác sĩ tin tưởng, hồ sơ minh bạch</li>
+            <li><i class="fa-solid fa-check"></i> Bác sĩ đến tận nhà đúng giờ hẹn</li>
+            <li><i class="fa-solid fa-check"></i> Xem lại hồ sơ sức khỏe điện tử trọn đời</li>
+            <li><i class="fa-solid fa-check"></i> Hoàn tiền 100% khi hủy lịch theo quy định</li>
+          </ul>
+        </div>
+
+        <div class="booking-hero-card">
+          <div class="hero-card-icon"><i class="fa-regular fa-hospital"></i></div>
+          <h3>Chuyên gia y tế chuẩn tuyến</h3>
+          <p>
+            Đội ngũ y bác sĩ từ các bệnh viện lớn tại TP.HCM sẵn sàng đến tận nhà
+            thăm khám chu đáo và tin cậy.
+          </p>
+          <span class="hero-card-note">
+            <i class="fa-solid fa-circle-check"></i> Phục vụ nhanh chóng tại TP. Thủ Đức
+          </span>
+        </div>
+      </section>
+
+
+      <!-- ===================== 2. THANH TÌM KIẾM + BỘ LỌC ===================== -->
+      <section class="toolbar">
+        <form class="search-box" id="search-form">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="Tìm kiếm bác sĩ theo tên, chuyên khoa hoặc bệnh lý...">
+          <button type="submit" class="btn btn-primary btn-pill">Tìm kiếm</button>
+        </form>
+
+        <button type="button" class="btn btn-outline btn-pill" id="filter-button">
+          <i class="fa-solid fa-filter"></i> Bộ lọc
+        </button>
+
+        <!-- 2 tab: data-type cho JS biết đang lọc loại nào -->
+        <div class="tabs">
+          <button type="button" class="tab active" data-type="bac-si">Bác sĩ</button>
+          <button type="button" class="tab" data-type="dieu-duong">Điều dưỡng</button>
+        </div>
+      </section>
+
+      <!-- Bảng bộ lọc: mặc định ẩn, bấm nút "Bộ lọc" mới hiện -->
+      <div class="filter-panel" id="filter-panel">
+        <label for="sort-select">Sắp xếp theo:</label>
+        <select id="sort-select">
+          <option value="default">Mặc định</option>
+          <option value="rating">Đánh giá cao nhất</option>
+          <option value="price-asc">Giá: thấp đến cao</option>
+          <option value="price-desc">Giá: cao đến thấp</option>
+        </select>
+      </div>
+
+
+      <!-- Dòng "Tìm thấy ... kết quả" (JS điền chữ vào) -->
+      <p class="result-count" id="result-count"></p>
+
+      <!-- ===================== 3. DANH SÁCH + CỘT BÊN PHẢI ===================== -->
+      <div class="booking-layout">
+
+        <section>
+          <!-- JS sẽ tạo các thẻ bác sĩ và đặt vào đây -->
+          <div class="doctor-list" id="doctor-list"></div>
+
+          <!-- JS sẽ tạo các nút số trang và đặt vào đây -->
+          <div class="pagination" id="pagination"></div>
+        </section>
+
+        <aside class="sidebar">
+          <span class="badge badge-green">DỊCH VỤ NỔI BẬT</span>
+          <h3>Đội ngũ Y Bác sĩ HomeCare</h3>
+          <p>
+            100% y bác sĩ có chứng chỉ hành nghề, đang công tác tại các bệnh viện
+            lớn tuyến trung ương và thành phố.
+          </p>
+          <ul class="sidebar-checks">
+            <li><i class="fa-solid fa-check"></i> Tư vấn sơ bộ miễn phí qua điện thoại</li>
+            <li><i class="fa-solid fa-check"></i> Bác sĩ mang đầy đủ dụng cụ y tế đạt chuẩn</li>
+            <li><i class="fa-solid fa-check"></i> Kê đơn thuốc điện tử tiện lợi</li>
+          </ul>
+          <a href="tel:19001234" class="sidebar-hotline">
+            <span class="sidebar-hotline-icon"><i class="fa-solid fa-phone"></i></span>
+            <span>
+              <small>Hỗ trợ đặt lịch nhanh 24/7</small>
+              <strong>Hotline: <span>1900 1234</span></strong>
+            </span>
+          </a>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER: được chèn tự động bởi js/layout.js -->
+  <div id="site-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/dat-kham.js"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+/* =========================================================
+   HOME.CSS - GIAO DIỆN TRANG CHỦ (index.html)
+   Người phụ trách: THÀNH VIÊN 2
+   ========================================================= */
+
+
+/* =============== 1. BANNER (HERO) =============== */
+.hero {
+  background-color: var(--primary-light);
+  padding: 64px 0 110px;       /* dưới dày hơn để chừa chỗ cho thẻ dịch vụ đè lên */
+}
+
+/* Chia 2 cột: chữ bên trái, ảnh bên phải */
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-text,
+.hero-image {
+  flex: 1;                     /* 2 cột rộng bằng nhau */
+}
+
+.hero h1 {
+  margin-bottom: 28px;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--primary-dark);
+}
+
+/* --- Ô tìm kiếm --- */
+.hero-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 680px;
+  padding: 8px 8px 8px 20px;
+  background-color: var(--white);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.hero-search i {
+  color: var(--text-light);
+}
+
+.hero-search input {
+  flex: 1;                     /* ô nhập chiếm hết chỗ trống */
+  width: 100%;                 /* cho phép ô nhập co lại, không làm tràn màn hình nhỏ */
+  padding: 10px 0;
+  border: none;
+  outline: none;               /* bỏ viền xanh mặc định khi bấm vào */
+  background: transparent;
+}
+
+/* Khi JS thêm class .error -> viền đỏ */
+.hero-search.error {
+  border-color: var(--error);
+}
+
+/* Dòng báo lỗi: mặc định ẩn */
+.search-error {
+  display: none;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--error);
+}
+
+.search-error.show {
+  display: block;
+}
+
+/* --- Danh sách có dấu tích --- */
+.hero-checks {
+  margin-top: 24px;
+}
+
+.hero-checks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.hero-checks i {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+
+/* Làm mờ dần các mép ảnh để ảnh hòa vào nền xanh, không lộ khung chữ nhật.
+   mask-image: phần màu đen = hiện rõ, phần trong suốt = ẩn đi
+   (-webkit- là tiền tố cho trình duyệt Chrome/Safari đời cũ) */
+.hero-image img {
+  -webkit-mask-image: radial-gradient(ellipse 55% 60% at center, #000 75%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 60% at center, #000 75%, transparent 100%);
+}
+
+
+/* =============== 2. DỊCH VỤ NHANH =============== */
+.services {
+  margin-top: -56px;           /* số âm -> kéo lên đè lên banner */
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 cột bằng nhau */
+  gap: 28px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 40px 20px;
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--primary-dark);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card i {
+  font-size: 46px;
+  color: var(--primary);
+}
+
+/* Rê chuột vào: thẻ nhích lên một chút */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(15, 60, 45, 0.14);
+}
+
+
+/* =============== 3. BÁC SĨ TIÊU BIỂU =============== */
+.featured-doctors {
+  padding: 64px 0;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.see-all {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.doctor-card {
+  padding: 28px 20px;
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.doctor-card .avatar {
+  margin: 0 auto 18px;         /* auto 2 bên -> căn giữa */
+}
+
+.doctor-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.doctor-specialty {
+  margin: 4px 0 8px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.doctor-card .rating {
+  margin-bottom: 18px;
+}
+
+
+/* =============== 4. ĐỐI TÁC =============== */
+.partners {
+  padding: 56px 0 72px;
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+.partners .section-title {
+  margin-bottom: 32px;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.partner-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  padding: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.partner-item img {
+  max-height: 74px;
+}
+
+
+/* =============== 5. RESPONSIVE =============== */
+
+/* Máy tính bảng */
+@media (max-width: 992px) {
+  .hero-inner {
+    flex-direction: column;    /* 2 cột -> xếp chồng lên nhau */
+    align-items: stretch;      /* mỗi phần rộng bằng khung */
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .services-grid,
+  .doctor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Điện thoại */
+@media (max-width: 576px) {
+  .hero {
+    padding: 40px 0 90px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero h1 br {
+    display: none;             /* bỏ xuống dòng cho chữ tự chảy */
+  }
+
+  .services-grid {
+    gap: 14px;
+  }
+
+  .service-card {
+    padding: 24px 12px;
+    font-size: 15px;
+  }
+
+  .service-card i {
+    font-size: 34px;
+  }
+
+  .doctor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

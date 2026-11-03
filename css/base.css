@@ -1,0 +1,176 @@
+/* =========================================================
+   BASE.CSS - CSS DÙNG CHUNG CHO TẤT CẢ CÁC TRANG
+   Người phụ trách: THÀNH VIÊN 1
+
+   File này chứa:
+   1. Biến màu (đổi màu cả web chỉ cần sửa ở đây)
+   2. Reset CSS (xóa khoảng cách mặc định của trình duyệt)
+   3. Khung .container (căn giữa nội dung)
+   4. Nút bấm .btn
+   5. Một vài thành phần nhỏ dùng ở nhiều trang (avatar, sao đánh giá)
+   ========================================================= */
+
+
+/* ---------- 1. BIẾN MÀU (CSS Variables) ----------
+   Khai báo 1 lần trong :root, chỗ khác gọi bằng var(--ten-bien)
+   Ví dụ: color: var(--primary);                                */
+:root {
+  --primary: #1d9e75;        /* xanh lá: màu nút bấm */
+  --primary-dark: #0f7d5c;   /* xanh đậm: tiêu đề, footer */
+  --primary-darker: #00694c; /* xanh rất đậm: header form đăng ký */
+  --primary-light: #e6f4ee;  /* xanh bạc hà: nền banner */
+  --orange: #f2a33a;         /* cam: hotline, viền dưới header */
+
+  --text: #1f2937;           /* màu chữ chính */
+  --text-light: #6b7280;     /* màu chữ phụ (xám) */
+  --border: #e5e7eb;         /* màu đường viền */
+  --bg-light: #f4f8f6;       /* nền xám nhạt */
+  --white: #ffffff;
+  --error: #e53935;          /* màu chữ báo lỗi */
+
+  --radius: 10px;            /* bo góc nhỏ */
+  --radius-lg: 16px;         /* bo góc lớn (thẻ card) */
+  --shadow: 0 4px 20px rgba(15, 60, 45, 0.08); /* đổ bóng nhẹ */
+}
+
+
+/* ---------- 2. RESET CSS ---------- */
+
+/* Xóa margin, padding mặc định.
+   box-sizing: border-box -> width đã bao gồm padding và border */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* cuộn trang mượt */
+}
+
+body {
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--white);
+}
+
+a {
+  color: inherit;          /* link lấy màu chữ của thẻ cha */
+  text-decoration: none;   /* bỏ gạch chân */
+}
+
+ul {
+  list-style: none;        /* bỏ dấu chấm đầu dòng */
+}
+
+img {
+  display: block;
+  max-width: 100%;         /* ảnh không bao giờ tràn khỏi khung */
+}
+
+/* Mặc định input, button không dùng font của trang -> ép dùng chung */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;         /* hiện bàn tay khi rê chuột vào nút */
+}
+
+
+/* ---------- 3. KHUNG CONTAINER ----------
+   Bọc nội dung để nó không bị kéo dài hết màn hình,
+   luôn nằm giữa và có khoảng cách 2 bên. */
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;          /* auto 2 bên = căn giữa */
+  padding: 0 24px;
+}
+
+
+/* ---------- 4. NÚT BẤM ----------
+   Cách dùng: <a class="btn btn-primary">Đặt lịch</a>
+   - .btn          : kiểu cơ bản (bắt buộc)
+   - .btn-primary  : nền xanh, chữ trắng
+   - .btn-outline  : nền trắng, viền xanh
+   - .btn-pill     : bo tròn 2 đầu
+   - .btn-small    : nút nhỏ
+   - .btn-block    : rộng 100%                                  */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;                /* khoảng cách giữa icon và chữ */
+  padding: 11px 22px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-weight: 600;
+  white-space: nowrap;     /* chữ trong nút không xuống dòng */
+  transition: all 0.2s;    /* hiệu ứng đổi màu mượt */
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-outline {
+  background-color: var(--white);
+  color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-light);
+}
+
+.btn-pill {
+  border-radius: 999px;
+}
+
+.btn-small {
+  padding: 6px 18px;
+  font-size: 14px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+
+/* ---------- 5. THÀNH PHẦN DÙNG CHUNG ---------- */
+
+/* Ảnh đại diện tròn có chữ cái (dùng ở trang chủ và trang đặt khám) */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;      /* 50% = hình tròn */
+  background-color: var(--primary-light);
+  border: 4px solid var(--white);
+  box-shadow: 0 0 0 1px #d4ebe1; /* viền mỏng bên ngoài */
+  color: var(--primary-dark);
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Số sao đánh giá màu cam: ★ 4.9 */
+.rating {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 14px;
+}
